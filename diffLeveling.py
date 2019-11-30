@@ -48,7 +48,7 @@ def main():
 
 
             else:
-                importCSV
+                importCSV = open("DiffLeveling.csv")
 
                 input_instHeight= []        # create empty list for intrument height
                 input_elevation = []        # create empty list for elevation
