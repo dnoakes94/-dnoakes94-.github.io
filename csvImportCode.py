@@ -25,20 +25,22 @@ def elvCalculation(foresight, instHeight, elevation):
 #def elevationChange()
 # im confused with how we will do this
 
+#try: 
+
 def main():
     # Display program purpose
     print "Welcome to Differential Leveling Computation Tool"
     print
-
-
-    importCSV = open("test.csv")
 
     # Lists to hold file input from the CSV
     input_instHeight= []        # create empty list for intrument height
     input_elevation = []        # create empty list for elevation
     input_backSight = []        # create empty list for back sight
     input_foresight = []        # create empty list for foresight
-    input_benchmark = []        # creates an empty list for the benchmark
+    input_benchMark = []        # creates an empty list for the benchmark
+
+    importCSV = open("test.csv", "r")
+
 
     firstline = True
     for strRead in importCSV:
@@ -48,8 +50,8 @@ def main():
         
         strLst = strRead.split(",")
     
-        benchmark = strLst[0]
-        input_benchmark.append(benchmark)
+        benchMark = strLst[0]
+        input_benchMark.append(benchMark)           # add benchMark to input_benchMark list
 
         backSight = strLst[1]
         input_backSight.append(backSight) 	        # add backSight to input_backSight list
@@ -74,11 +76,12 @@ def main():
     objectID = []                       # empty list for unique object ID's
     uniqueID = 0
 
-    for index in range(1, len(input_elevation)):   	        # index will be 0, 1, 2, ...
+    for index in range(0, len(input_elevation)):   	        # index will be 0, 1, 2, ...
         elevation = input_elevation[index]       	        # retrieve elevation in index position from input_elevation list
         instHeight = input_instHeight[index]                # retrieve instHeight in index position from input_instHeight list
         foresight = input_foresight[index]                  # retrieve foresight  in index position from input_foresight  list
         backSight = input_backSight[index]                  # retrieve backsight in index position from input_foresight list
+        benchMark = input_benchMark[index]                  # retrieve benchMark in index position from input_benchmark list
 
     groundElevation = elvCalculation(foresight, instHeight, elevation)
     calc_elevation.append(groundElevation)
@@ -94,12 +97,31 @@ def main():
 ############################### This Section will include include our outputs #################################################################
 
     importCSV_write = open('CSVOuputs', 'w')
-    importCSV_write.write = ('UniqueID, BackSight, InstrumentHeight, ForeSight, Elevation\n')
+    importCSV_write.write = ('UniqueID, BenchMark, BackSight, InstrumentHeight, ForeSight, Elevation\n')
 
     #output loop
     for index in range(0, len(input_elevation)):
-        importCSV_write.write = ( str(objectID[index]) + "," + str(input_backSight[index]) \
+        importCSV_write.write = (str(objectID[index]) + "," + str(benchMark[index]) + "," + str(input_backSight[index]) \
             + "," + str(input_instHeight[index]) + "," + str(input_foresight[index]) + "," + str(input_elevation[index]) + '\n' )
 
 if __name__ == "__main__":
     main()
+
+# except Exception, message:
+#     print "An error occured. Please try again."
+#     print message
+
+# except NameError:
+#     print "Variable is not found in local space. Please try again."
+
+# except IndexError:
+#     print "Index of a sequence is out of range. Please try again."
+
+# except TypeError:
+#     print "You cant add strings and integers. Please try again."
+
+# except ValueError:
+#     print "Value must be a number. Please try again."
+
+# except ZeroDivisionError:
+#     print "You can't divide by zero. Please try again."
