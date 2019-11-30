@@ -36,7 +36,8 @@ def main():
     #################### Start of input ########################
 
     # lists to hold file input
-    input_instHeight= []                    # create empty list for intrument height
+    input_benchmark = []                    #create empty iist for benchmark
+    input_instHeight = []                   # create empty list for intrument height
     input_elevation = []                    # create empty list for elevation
     input_backSight = []                    # create empty list for back sight
     input_foreSight = []                    # create empty list for foresight
