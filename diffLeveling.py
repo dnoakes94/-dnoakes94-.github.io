@@ -104,7 +104,7 @@ print
 
     #Output for csv 
     fo1 = open('Output.txt', 'w')
-    fo1.write("Latitude (degrees)"+"\t\t"+"External Pressure (mb)"+"\t\t"+"Central Pressure (mb)"+"\t\t"+"Windspeed (kn)"+"\t\t"+"Hurricane Severity"+"\t\n")
+    fo1.write("Benchmark"+"\t\t"+"Backsight"+"\t\t"+"Instrument Height"+"\t\t"+"Foresight"+"\t\t"+"Elevation"+"\t\n")
     for index in range(0, len(input_centralpress)):
         #Create new list for each item, convert to strings
         newLst = str(input_latitude[index]) + "\t\t\t\t" + str(input_externalpress[index]) + "\t\t\t\t" + str(input_centralpress[index]) + "\t\t\t\t" + str(calc_windspeed[index]) + "\t\t" + str(hurricane_severity[index]) + "\t\n"
