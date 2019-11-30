@@ -5,25 +5,24 @@
 import math
 import csv
 
-#write helper files first
-#anything that will read or write
+# Define the funtions to be used to compute differential leveling(Dan)
 
 def instHeightCalculation(instHeight, elevation, backSight):
         instHeight = float(instHeight)
-        instHeight = float(elevation) + float(bckSight)
+        instHeight = float(elevation) + float(backSight)
         round(instHeight, 3)
         return instHeight
        
 def elvCalculation(foresight, instHeight, elevation):
         elevation = float(elevation)
-        elvation = float(instHeight) - float(foresight)
+        elevation = float(instHeight) - float(foresight)
         round(elevation, 3)
         return elevation
 
-    #should equal to 0
-def errorOfClosure(foresight, backSight):
-        check = sum(input_foresight) - sum(input_backSight)
-        return check
+#     #should equal to 0
+# def errorOfClosure(foresight, backSight):
+#         check = sum(input_foresight) - sum(input_backSight)
+#         return check
 
 #def elevationChange()
 # im confused with how we will do this
@@ -42,7 +41,7 @@ def main():
             
             ######################## This Section will compute manual input and print a CSV file with the results ################################
 
-           
+           #Caroline's Section
 
 
 
@@ -52,56 +51,20 @@ def main():
 
             ###################### This section will compute an imported CSV file and print a new CSV with the results #################################
 
-            else: 
-                importCSV = open("test.csv")
+            # Dan's Section
 
-                # Lists to hold file input from the CSV
-                input_instHeight= []        # create empty list for intrument height
-                input_elevation = []        # create empty list for elevation
-                input_backSight = []        # create empty list for back sight
-                input_foresight = []        # create empty list for foresight
 
-                firstline = True
-                for strRead in importCSV:
-                    if firstline:
-                        firstline = False
-                        continue
-                    
-                    strLst = strRead.split(",")
-                
-                    backSight = strLst[1]
-                    input_backSight.append(backSight) 	        # add backSight to input_backSight list
-                    
-                    instHeight = strLst[2]
-                    input_instHeight.append(instHeight) 	    # add instHeight to input_instHeight list
-                    
-                    foresight = strLst[3]
-                    input_foresight.append(foresight) 		    # add foresight to input_foresight list
 
-                    elevation = strLst[4]                       # add elevation to input_elevation list
-                    elevation = elvation.rstrip('\n')
-                    input_elevation.append(elevation)
 
-                importCSV.close()
+
 
             ############################### End of input, start of CSV file calculations #############################################################
 
-                calc_instHeight = []                # empty list for calculated intrument height
-                calc_elevation = []                 # empty list for calculated elevation
-                calc_errOfClosure = []              # empty list for error of closure
-                objectID = []                       # empty list for unique object ID's
-                uniqueID = 0
+            # Dan's Section
 
-                for index in range(1, len(input_elevation)):   	        # index will be 0, 1, 2, ...
-                    elevation = input_elevation[index]       	        # retrieve elevation in index position from input_elevation list
-                    instHeight = input_instHeight[index]                # retrieve instHeight in index position from input_instHeight list
-                    foresight = input_foresight[index]                  # retrieve foresight  in index position from input_foresight  list
-                    backSight = input_backSight[index]                  # retrieve backsight in index position from input_foresight list
 
-            
-                
 
-                    
+
 
 
 
@@ -109,8 +72,12 @@ def main():
 
             ############################### This Section will include include our outputs #################################################################
 
+            # Christine's Section
 
 
+
+
+    #Exception Handlers (Dan)
 
     #exeption handlers for errors
     except Exception, message:
