@@ -7,6 +7,7 @@ import csv
 
 #write helper files first
 #anything that will read or write
+#User Created Functions
 
 def instHeightCalculation(instHeight, elevation, backSight):
         instHeight = float(instHeight)
@@ -31,6 +32,16 @@ def main():
     # Display program purpose
     print "Welcome to Differential Leveling Computation Tool"
     print
+
+    #################### Start of input ########################
+
+    # lists to hold file input
+    input_instHeight= []                    # create empty list for intrument height
+    input_elevation = []                    # create empty list for elevation
+    input_backSight = []                    # create empty list for back sight
+    input_foreSight = []                    # create empty list for foresight
+
+    # obtain inputs from user
 
     # Create a while loop with exception handlers that will run until user does not want to input anymore values or CSV files
     try:
@@ -66,15 +77,42 @@ def main():
                     firstline = False
                     continue
             
-
+    
 
             
 
 
+    ############## End of input, Start of calculations ################
+    
+    # list to hold calculated results
 
 
 
-            ############################### This Section will include include our outputs #################################################################
+    ############## End of calculations, Start of output #################
+
+print "---------------------------------------------------------------------------------"
+print
+
+    # Display column header line
+    print ""
+
+    # Display latitude, external pressure, central pressure, windspeed from lists in table format
+    for index in range(0, len(input_centralpress)):        # index will be 0, 1, 2, ...
+    # print latitude, external pressure, central pressure and wind speed from lists
+    # formated to two decimals with decimals aligned
+        print input_latitude[index], "\t", "\t", "\t", round(input_externalpress[index], 2), "\t", "\t", "\t", round(input_centralpress[index], 2), "\t", "\t", "\t", round(calc_windspeed[index], 2), "\t", "\t", hurricane_severity[index]
+
+    #Output for csv 
+    fo1 = open('Output.txt', 'w')
+    fo1.write("Latitude (degrees)"+"\t\t"+"External Pressure (mb)"+"\t\t"+"Central Pressure (mb)"+"\t\t"+"Windspeed (kn)"+"\t\t"+"Hurricane Severity"+"\t\n")
+    for index in range(0, len(input_centralpress)):
+        #Create new list for each item, convert to strings
+        newLst = str(input_latitude[index]) + "\t\t\t\t" + str(input_externalpress[index]) + "\t\t\t\t" + str(input_centralpress[index]) + "\t\t\t\t" + str(calc_windspeed[index]) + "\t\t" + str(hurricane_severity[index]) + "\t\n"
+        fo1.write(newLst)                                  #Write each item to a new list
+    fo1.close()
+
+
+    ############################### This Section will include include our outputs #################################################################
 
 
 
