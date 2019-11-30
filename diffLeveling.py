@@ -14,11 +14,17 @@ def instHeightCalculation(instHeight, elevation, backSight):
         round(instHeight, 3)
         return instHeight
        
-def elvCalculation(foreSight, instHeight, elevation):
+def elvCalculation(foresight, instHeight, elevation):
         elevation = float(elevation)
-        elvation = float(instHeight) - float(foreSight)
+        elvation = float(instHeight) - float(foresight)
         round(elevation, 3)
         return elevation
+
+    #should equal to 0
+def errorOfClosure(foresight, backSight)
+        check = sum(input_foresight) - sum(input_backSight)
+        return check
+
 
 
 def main():
@@ -45,15 +51,24 @@ def main():
 
             ###################### This section will compute an imported CSV file and print a new CSV with the results #################################
 
-
-
             else:
-                importCSV = open("DiffLeveling.csv")
+                importCSV = open("test.csv")
 
+                # Lists to hold file input from the CSV
                 input_instHeight= []        # create empty list for intrument height
                 input_elevation = []        # create empty list for elevation
                 input_backSight = []        # create empty list for back sight
-                input_foreSight = []         # create empty list for fore sight
+                input_foreSight = []        # create empty list for foresight
+
+            firstline = True
+            for strRead in importCSV:
+                if firstline:
+                    firstline = False
+                    continue
+            
+
+
+            
 
 
 
