@@ -14,9 +14,9 @@ def instHeightCalculation(instHeight, elevation, backSight):
         round(instHeight, 3)
         return instHeight
        
-def elvCalculation(forSight, instHeight, elevation):
+def elvCalculation(foreSight, instHeight, elevation):
         elevation = float(elevation)
-        elvation = float(instHeight) - float(forSight)
+        elvation = float(instHeight) - float(foreSight)
         round(elevation, 3)
         return elevation
 
@@ -26,30 +26,45 @@ def main():
     print "Welcome to Differential Leveling Computation Tool"
     print
 
-
+    # Create a while loop with exception handlers that will run until user does not want to input anymore values or CSV files
     try:
         while true:
             print "Differential Leveling Computation"
 
-            manualOrCSV = raw_input("Type of computation: manual or csv ") 
+            manualOrCSV = raw_input("Type of computation: manualInput or importCSV ") #checks to see if user want to input manually or import a CSV
             
-            # if manualOrCSV = "manual"
+            ######################## This Section will compute manual input and print a CSV file with the results ################################
 
-            #     if
-            #      if
-            #
-        
+           
+
+
+
+
+
+
+
+            ###################### This section will compute an imported CSV file and print a new CSV with the results #################################
+
+
 
             else:
+                importCSV
+
+                input_instHeight= []        # create empty list for intrument height
+                input_elevation = []        # create empty list for elevation
+                input_backSight = []        # create empty list for back sight
+                input_foreSight = []         # create empty list for fore sight
 
 
 
 
 
+            ############################### This Section will include include our outputs #################################################################
 
 
 
 
+    #exeption handlers for errors
     except Exception, message:
         print "An error occured. Please try again."
         print message
