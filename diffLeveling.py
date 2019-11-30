@@ -8,8 +8,20 @@ import csv
 #write helper files first
 #anything that will read or write
 
-def instHeight(insteight, elevation, bckSight)
-        instrumentHeight = 
+def instHeightCalculation(instHeight, elevation, backSight):
+        instHeight = float(instHeight)
+        instHeight = float(elevation) + float(bckSight)
+        round(instHeight, 3)
+        return instHeight
+       
+def elvCalculation(forSight, instHeight, elevation):
+        elevation = float(elevation)
+        elvation = float(instHeight) - float(forSight)
+        round(elevation, 3)
+        return elevation
+
+
+
 
 try:
     while true:
