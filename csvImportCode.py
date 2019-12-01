@@ -5,13 +5,16 @@
 import math
 import csv
 
+#You may want to use for i, x in enumerate(tdlist): and print(i, x) to see which entry i in the tdlist is causing the error
+
 def instHeightCalculation(instHeight, elevation, backSight):
         instHeight = float(instHeight)
         instHeight = float(elevation) + float(backSight)
         round(instHeight, 3)
         return instHeight
+        
        
-def elvCalculation(foresight, instHeight, elevation):
+def elevCalculation(foresight, instHeight, elevation):
         elevation = float(elevation)
         elevation = float(instHeight) - float(foresight)
         round(elevation, 3)
@@ -39,7 +42,7 @@ def main():
     input_foresight = []        # create empty list for foresight
     input_benchMark = []        # creates an empty list for the benchmark
 
-    importCSV = open("test.csv", "r")
+    importCSV = open("TextDoc.csv", "r")
 
 
     firstline = True
@@ -76,17 +79,20 @@ def main():
     objectID = []                       # empty list for unique object ID's
     uniqueID = 0
 
-    for index in range(0, len(input_elevation)):   	        # index will be 0, 1, 2, ...
+    for index in range(2, len(input_elevation)):   	        # index will be 0, 1, 2, ...
         elevation = input_elevation[index]       	        # retrieve elevation in index position from input_elevation list
         instHeight = input_instHeight[index]                # retrieve instHeight in index position from input_instHeight list
         foresight = input_foresight[index]                  # retrieve foresight  in index position from input_foresight  list
         backSight = input_backSight[index]                  # retrieve backsight in index position from input_foresight list
         benchMark = input_benchMark[index]                  # retrieve benchMark in index position from input_benchmark list
 
-    groundElevation = elvCalculation(foresight, instHeight, elevation)
+    #for index in range (2, len(input_elevation))
+
+
+    groundElevation = elevCalculation(float(foresight), float(instHeight), float(elevation))
     calc_elevation.append(groundElevation)
 
-    intrumentHeight = instHeightCalculation(instHeight, elevation, backSight)
+    intrumentHeight = instHeightCalculation(float(instHeight), float(elevation), float(backSight))
     calc_instHeight.append(intrumentHeight)
 
     # Give the new CSV rows a unique ID
@@ -106,7 +112,6 @@ def main():
 
 if __name__ == "__main__":
     main()
-
 # except Exception, message:
 #     print "An error occured. Please try again."
 #     print message
