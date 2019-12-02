@@ -6,16 +6,16 @@ import math
 import csv
 import itertools
 
-def instHeightCalculation(instHeight, elevation, backSight):
-        instHeight = float(instHeight)
-        instHeight = float(elevation) + float(backSight)
+def instHeightCalculation(elevation, backSight):
+        #instHeight = float(instHeight)
+        instHeight = float(elevation[0]) + float(backSight[0])
         round(instHeight, 3)
         return instHeight
         
       
-def elevCalculation(foresight, instHeight, elevation):
-        elevation = float(elevation)
-        elevation = float(instHeight) - float(foresight)
+def elevCalculation(foresight, instHeight):
+        #elevation = float(elevation)
+        elevation = float(instHeight[0]) - float(foresight[1])
         round(elevation, 3)
         return elevation
 
@@ -36,12 +36,12 @@ def main():
     print
 
     # Lists to hold file input from the CSV
-    input_instHeight= []        # create empty list for intrument height
-    input_elevation = []        # create empty list for elevation
-    input_backSight = []        # create empty list for back sight
-    input_foresight = []        # create empty list for foresight
     input_benchMark = []        # creates an empty list for the benchmark
-
+    input_backSight = []        # create empty list for back sight
+    input_instHeight= []        # create empty list for intrument height
+    input_foresight = []        # create empty list for foresight
+    input_elevation = []        # create empty list for elevation
+    
     importCSV = open("TextDoc.csv", "r")
 
   
@@ -81,33 +81,25 @@ def main():
     calc_instHeight = []
     calc_elevation = []
     #calc_errOfClosure = []
-    objectID = []
-    uniqueID = 0
 
 
     # retrieves the variable in a specific index from the input list
-    for index in range(1, len(input_elevation)):
-        foresight = input_foresight[index]
-        backSight = input_backSight[index]
-        benchMark = input_benchMark[index]
-        elevation = input_elevation[index]
+    for index in range(0, len(input_elevation)):
+        instHeight = float(input_instHeight[0])
+        elevation = float(input_elevation[0])
+        foresight = float(input_foresight[1])
+        backSight = float(input_backSight[0])
+        benchMark = float(input_benchMark[index])
+        
+        intrumentHeight = instHeightCalculation(elevation, backSight)
+        calc_instHeight.append(intrumentHeight)
 
-    # calculates elevation using index minus 1 of intrument height to perform the elevation calculation
-    for index in range (2, len(input_instHeight)):
-        instHeight = input_instHeight[index-1]
-        elevation = input_elevation[index]
-        foresight = input_foresight[index]
+        groundElevation = elevCalculation(foresight,instHeight)
+        calc_elevation.append(groundElevation)
 
-    groundElevation = elevCalculation(float(foresight), float(instHeight), float(elevation))
-    calc_elevation.append(groundElevation)
+        if index > 8:
+            break
 
-    intrumentHeight = instHeightCalculation(float(instHeight), float(elevation), float(backSight))
-    calc_instHeight.append(intrumentHeight)
-
-    # Give the new CSV rows a unique ID
-    uniqueID += 1
-    objectID.append(uniqueID)
-    
 
 ############################### This Section will include include our outputs #################################################################
 
@@ -116,7 +108,7 @@ def main():
 
     # output loop
     for index in range(0, len(input_elevation)):
-        importCSV_write.write = (str(objectID[index]) + "," + str(benchMark[index]) + "," + str(input_backSight[index]) \
+        importCSV_write.write = (str(benchMark[index]) + "," + str(input_backSight[index]) \
             + "," + str(input_instHeight[index]) + "," + str(input_foresight[index]) + "," + str(input_elevation[index]) + '\n' )
 
 if __name__ == "__main__":
