@@ -7,14 +7,14 @@ import csv
 import itertools
 
 def instHeightCalculation(instHeight, elevation, backSight):
-        instHeight = float(instHeight)
-        instHeight = float(elevation) + float(backSight)
-        round(instHeight, 3)
+        instHeight = float(instHeight)                              #I don't think this one is needed because it will be overwritten with the next one
+        instHeight = float(elevation) + float(backSight)            #why do we have the first and then the second one, which basically overwites the first one?
+        round(instHeight, 3)                                    
         return instHeight
         
       
 def elevCalculation(foresight, instHeight, elevation):
-        elevation = float(elevation)
+        elevation = float(elevation)                            #same thing, this gets overwritten in the next line
         elevation = float(instHeight) - float(foresight)
         round(elevation, 3)
         return elevation
@@ -25,8 +25,10 @@ def elevCalculation(foresight, instHeight, elevation):
 #         check = sum(input_foresight) - sum(input_backSight)
 #         return check
 
-#def elevationChange()
-# im confused with how we will do this
+# def elevationChange():                                                             #im confused with how we will do this
+#         elevationChange = float(elevation[0]) - float(elevation[-1])              #I think this is how we can calculate elevationChange
+#         round(elevationChange, 3)
+#         return elevationChange
 
 #try: 
 
