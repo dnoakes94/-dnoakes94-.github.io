@@ -34,7 +34,7 @@ def main():
 
     # Create a while loop with exception handlers that will run until user does not want to input anymore values or CSV files
     try:
-        while true:
+        while True:
             print "Differential Leveling Computation"
 
             manualOrCSV = raw_input("Type of computation: manualInput or importCSV ") #checks to see if user want to input manually or import a CSV
