@@ -5,7 +5,7 @@
 import math
 import csv
 
-##### User defined functions #####
+#################### User defined functions ####################
 
 # Define the funtions to be used to compute differential leveling(Dan)
 
@@ -36,6 +36,8 @@ def main():
     # Display program purpose
     print "Welcome to Differential Leveling Computation Tool"
     print
+
+    #################### Start of input ####################
 
     # Create a while loop with exception handlers that will run until user does not want to input anymore values or CSV files
     try:
@@ -74,10 +76,16 @@ def main():
 
 
 
+    #################### End of input, start of calculations ####################
+
+    #################### End of calculations, Start of outputs ####################
 
             ############################### This Section will include include our outputs #################################################################
 
             # Christine's Section
+
+        print "---------------------------------------------------------------------------------"
+        print
 
 
 
