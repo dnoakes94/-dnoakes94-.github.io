@@ -5,6 +5,8 @@
 import math
 import csv
 
+##### User defined functions #####
+
 # Define the funtions to be used to compute differential leveling(Dan)
 
 def instHeightCalculation(instHeight, elevation, backSight):
@@ -24,8 +26,11 @@ def elvCalculation(foresight, instHeight, elevation):
 #         check = sum(input_foresight) - sum(input_backSight)
 #         return check
 
-#def elevationChange()
-# im confused with how we will do this
+#This function should should calculate elevation change between the initial elevation and the final calculated elevation from the list
+def elevationChange(elevation):                                                             
+        elevationChange = float(elevation[0]) - float(elevation[-1])              #I think this is how we can calculate elevationChange
+        round(elevationChange, 3)
+        return elevationChange
 
 def main():
     # Display program purpose
