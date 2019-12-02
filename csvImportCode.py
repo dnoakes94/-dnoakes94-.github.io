@@ -6,29 +6,14 @@ import math
 import csv
 import itertools
 
-<<<<<<< HEAD
 def instHeightCalculation(elevation, backSight):
-        #instHeight = float(instHeight)
         instHeight = float(elevation[0]) + float(backSight[0])
         round(instHeight, 3)
         return instHeight
         
       
 def elevCalculation(foresight, instHeight):
-        #elevation = float(elevation)
         elevation = float(instHeight[0]) - float(foresight[1])
-=======
-def instHeightCalculation(instHeight, elevation, backSight):
-        instHeight = float(instHeight)                              #I don't think this one is needed because it will be overwritten with the next one
-        instHeight = float(elevation) + float(backSight)            #why do we have the first and then the second one, which basically overwites the first one?
-        round(instHeight, 3)                                    
-        return instHeight
-        
-      
-def elevCalculation(foresight, instHeight, elevation):
-        elevation = float(elevation)                            #same thing, this gets overwritten in the next line
-        elevation = float(instHeight) - float(foresight)
->>>>>>> f1b29372e1a93d0b3552a6bcc1314eb23f48c671
         round(elevation, 3)
         return elevation
 
@@ -38,12 +23,12 @@ def elevCalculation(foresight, instHeight, elevation):
 #         check = sum(input_foresight) - sum(input_backSight)
 #         return check
 
-# def elevationChange():                                                             #im confused with how we will do this
-#         elevationChange = float(elevation[0]) - float(elevation[-1])              #I think this is how we can calculate elevationChange
+# def elevationChange(): 
+#         elevationChange = float(elevation[0]) - float(elevation[-1])
 #         round(elevationChange, 3)
 #         return elevationChange
 
-#try: 
+#try:
 
 def main():
     # Display program purpose
@@ -96,6 +81,7 @@ def main():
     calc_instHeight = []
     calc_elevation = []
     #calc_errOfClosure = []
+    #elevationChange = []
 
 
     # retrieves the variable in a specific index from the input list
@@ -112,7 +98,7 @@ def main():
         groundElevation = elevCalculation(foresight,instHeight)
         calc_elevation.append(groundElevation)
 
-        if index > 8:
+        if index = index + 1:
             break
 
 
