@@ -11,22 +11,26 @@ import csv
 
 def instHeightCalculation(instHeight, elevation, backSight):
         instHeight = float(instHeight)
-        instHeight = float(elevation) + float(bckSight)
+        instHeight = float(elevation) + float(backSight)
         round(instHeight, 3)
         return instHeight
        
 def elvCalculation(foresight, instHeight, elevation):
         elevation = float(elevation)
-        elvation = float(instHeight) - float(foresight)
+        elevation = float(instHeight) - float(foresight)
         round(elevation, 3)
         return elevation
 
-    #should equal to 0
-def errorOfClosure(foresight, backSight)
-        check = sum(input_foresight) - sum(input_backSight)
-        return check
+#     #should equal to 0
+# def errorOfClosure(foresight, backSight):
+#         check = sum(input_foresight) - sum(input_backSight)
+#         return check
 
-
+#This function should should calculate elevation change between the initial elevation and the final calculated elevation from the list
+def elevationChange(elevation):                                                             
+        elevationChange = float(elevation[0]) - float(elevation[-1])              #I think this is how we can calculate elevationChange
+        round(elevationChange, 3)
+        return elevationChange
 
 def main():
     # Display program purpose
@@ -46,14 +50,14 @@ def main():
 
     # Create a while loop with exception handlers that will run until user does not want to input anymore values or CSV files
     try:
-        while true:
+        while True:
             print "Differential Leveling Computation"
 
             manualOrCSV = raw_input("Type of computation: manualInput or importCSV ") #checks to see if user want to input manually or import a CSV
             
             ######################## This Section will compute manual input and print a CSV file with the results ################################
 
-           
+           #Caroline's Section
 
 
 
@@ -63,14 +67,8 @@ def main():
 
             ###################### This section will compute an imported CSV file and print a new CSV with the results #################################
 
-            else:
-                importCSV = open("test.csv")
+            # Dan's Section
 
-                # Lists to hold file input from the CSV
-                input_instHeight= []        # create empty list for intrument height
-                input_elevation = []        # create empty list for elevation
-                input_backSight = []        # create empty list for back sight
-                input_foreSight = []        # create empty list for foresight
 
             firstline = True
             for strRead in importCSV:
@@ -80,7 +78,11 @@ def main():
             
     
 
-            
+
+
+            ############################### End of input, start of CSV file calculations #############################################################
+
+            # Dan's Section
 
 
     ############## End of input, Start of calculations ################
@@ -91,11 +93,9 @@ def main():
 
     ############## End of calculations, Start of output #################
 
-print "---------------------------------------------------------------------------------"
-print
 
     # Display column header line
-    print ""
+    print "Column header"
 
     # Display latitude, external pressure, central pressure, windspeed from lists in table format
     for index in range(0, len(input_centralpress)):        # index will be 0, 1, 2, ...
@@ -115,8 +115,15 @@ print
 
     ############################### This Section will include include our outputs #################################################################
 
+            # Christine's Section
+
+    print "---------------------------------------------------------------------------------"
+    print
 
 
+
+
+    #Exception Handlers (Dan)
 
     #exeption handlers for errors
     except Exception, message:
