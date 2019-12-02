@@ -32,34 +32,81 @@ def elevationChange(elevation):
         round(elevationChange, 3)
         return elevationChange
 
-def main():
-    # Display program purpose
-    print "Welcome to Differential Leveling Computation Tool"
-    print
 
-    #################### Start of input ####################
 
-    # Create a while loop with exception handlers that will run until user does not want to input anymore values or CSV files
-    try:
-        while True:
-            print "Differential Leveling Computation"
+# Display program purpose
+print "Welcome to Differential Leveling Calculation Tool"
+print "This program uses the benchmark, foresight and backsight measurements"
+print "to calculate the instrument height and change in elevation."
+print
 
-            manualOrCSV = raw_input("Type of computation: manualInput or importCSV ") #checks to see if user want to input manually or import a CSV
+    #################### Start of input #################### 
+
+# Create a while loop with exception handlers that will run until user does not want to input anymore values or CSV files
+try:
+    while True:
+        print "Differential Leveling Calculator"
+        print
+        print "******************************************"
+        print "A. Enter measurements manually"
+        print "B. Import a .csv file"
+        print "C. Exit"
+        print "******************************************"
+    ("Type of input: manualInput or importCSV ")
+    manualOrCSV = raw_input("Please choose one of the options above to get started (A, B, C): ") #checks to see if user want to input manually or import a CSV
+    if manualOrCSV == "A" or manualOrCSV == "a":
+        manualInput()
+    elif manualOrCSV == "B" or choice == "b":
+        importCSV()
+    else:
+        print ("Exiting")
+    
+
+    def main():
+        def manualInput():                                  # This Section will compute manual input and print a CSV file with the results #
             
-            ######################## This Section will compute manual input and print a CSV file with the results ################################
+            input_backSight = []                            # create empty list for back sight
+            input_foresight = []                            # create empty list for foresight
+            input_elevation = []                            # creates an empty list for elevation
 
-           #Caroline's Section
+            elevation = float(input("Benchmark:")) 
+            input_elevation.append(elevation)
+            
+            while True:
+                backSight = float(input("Backsight reading:")) 
+                input_backSight.append(backSight) 		        # add backSsight to input_backSight list
 
+                foresight = float(input("Foresight reading:")) 
+                input_foresight.append(foresight) 		        # add foreSsight to input_foreSight list
 
+                print
+                end = raw_input("Do you want to stop entering values (Y/N)? ") # determine whether user wants to enter another set of input values
+                end = end.rstrip("\r")
+                print
+                if  end.upper() == 'Y' :
+                        break
 
+            # Calculations 
+            calc_instHeight= []                                 # create empty list for intrument height
 
+            for index in range(0, len(input_elevation)):   	    # index will be 0, 1, 2, ...
 
+                backSight = input_backSight[index]       	    # retrieve backsight in index position from input_backsight list
+                foresight = input_foresight[index]              # retrieve foresight in index position from input_foresight list
+                elevation = input_elevation[index]              # retrieve elevation in index position from input_elevation list
+                instHeight =  calc_instHeight[index]            # retrieve instHeight in index position from calc_instHeight list      
 
+                instHeight = instHeightCalculation(elevation, backSight, instHeight)
+                calc_instHeight.append(instHeight)              # add instHeight to calc_instHeight
 
-            ###################### This section will compute an imported CSV file and print a new CSV with the results #################################
-
-            # Dan's Section
-
+                elevation = elvCalculation(foresight, instHeight, elevation)
+                input_elevation.append(elevation)               # add elevation to input_elevation list
+            
+            
+        ###################### This section will read an imported CSV file and print a new CSV with the results #################################
+        # Dan's Section
+        def importCSV():
+        
 
 
 
@@ -76,41 +123,39 @@ def main():
 
 
 
-    #################### End of input, start of calculations ####################
+        #################### End of input, start of calculations ####################
 
-    #################### End of calculations, Start of outputs ####################
+        #################### End of calculations, Start of outputs ####################
 
-            ############################### This Section will include include our outputs #################################################################
+        ############################### This Section will include include our outputs #################################################################
 
-            # Christine's Section
+        # Christine's Section
 
-        print "---------------------------------------------------------------------------------"
-        print
-
-
+        # print "---------------------------------------------------------------------------------"
+        # print
 
 
-    #Exception Handlers (Dan)
+        #Exception Handlers (Dan)
+        except:
+        #exeption handlers for errors
+        except Exception, message:
+            print "An error occured. Please try again."
+            print message
 
-    #exeption handlers for errors
-    except Exception, message:
-        print "An error occured. Please try again."
-        print message
+        except NameError:
+            print "Variable is not found in local space. Please try again."
 
-    except NameError:
-        print "Variable is not found in local space. Please try again."
+        except IndexError:
+            print "Index of a sequence is out of range. Please try again."
 
-    except IndexError:
-        print "Index of a sequence is out of range. Please try again."
+        except TypeError:
+            print "You cant add strings and integers. Please try again."
 
-    except TypeError:
-        print "You cant add strings and integers. Please try again."
+        except ValueError:
+            print "Value must be a number. Please try again."
 
-    except ValueError:
-        print "Value must be a number. Please try again."
-
-    except ZeroDivisionError:
-        print "You can't divide by zero. Please try again."
+        except ZeroDivisionError:
+            print "You can't divide by zero. Please try again."
 
 if __name__ == "__main__":
     main()
