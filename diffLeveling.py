@@ -22,7 +22,7 @@ def elvCalculation(instHeight, foresight):
 # This function should should calculate elevation change between the initial elevation and the final calculated elevation from the list
 def elevationChange(elevation):                                                             
         elevationChange = float(elevation[0]) - float(elevation[-1])              #I think this is how we can calculate elevationChange
-        round(elevationChange, 3)
+        elevationChange = round(elevationChange, 3)
         return elevationChange
 
 #Caroline's Section
@@ -70,7 +70,7 @@ def manualInput():
         print elevationChange 
 
 def importCSV():
-    print ("dans section") 
+    #Dan's section here 
 
 def main():
     # Display program purpose
