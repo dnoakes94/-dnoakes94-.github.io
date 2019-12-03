@@ -115,16 +115,14 @@ def main():
     # Display elevation change
     # print elevation change from list
     # formatted to three decimal places
-    print calc_elevationChange[index]
-
-
+    print "The elevation change for your inputs is: " lc_elevationChange[index]
 
     # Based on the generated inputs and calculations from the above table, generate a text file with it
-    #Output for csv 
+    # Output for csv 
     fo1 = open('ManualOutput.txt', 'w')
     fo1.write("Benchmark"+"\t\t"+"Backsight"+"\t\t"+"Instrument Height"+"\t\t"+"Foresight"+"\t\t"+"Elevation"+"\t\n")
     for index in range(0, len(input_benchmark)):
-        #Create new list for each item, convert to strings
+        # Create new list for each item, convert to strings
         newLst = str(input_benchmark[index]) + "\t\t\t\t" + str(input_backSight[index]) + "\t\t\t\t" + str(listinput_instHeight[index]) + "\t\t\t\t" + str(input_foreSight[index]) + "\t\t" + str(listinput_foreSight[index]) + "\t\n"
         fo1.write(newLst)                                  #Write each item to a new list
     fo1.close()
