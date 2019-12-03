@@ -1,14 +1,12 @@
 # diffLeveling.py
 #Differential Leveling Computation
 #Caroline Bull, Christine Lacanilao, Daniel Noakes
-#Calculated the elevation 
+#Calculate elevation given a starting elevation point, and entered backsight and foresight values
+#Given the option to do manual entry or to import a csv
 
 #Import math and csv module
 import math
 import csv
-
-#write helper files first
-#anything that will read or write
 
 ############################## User Created Functions ##############################
 
@@ -99,7 +97,7 @@ def main():
 
     # This should display all the gathered inputs and calculations in a table format
     # Display column header line
-    print "Station Number\tBackSight\tInstrument Height\t ForeSight\tElevation"
+    print "Benchmark\tBackSight\tInstrument Height\t ForeSight\tElevation"
 
     # Display station number, backsight, instrument height, foresight, and elevation lists in table format
     for index in range(0, len(input_benchmark)):        # index will be 0, 1, 2, ...
@@ -110,7 +108,7 @@ def main():
     # Based on the generated inputs and calculations from the above table, generate a text file with it
     #Output for csv 
     fo1 = open('ManualOutput.txt', 'w')
-    fo1.write("Station Number"+"\t\t"+"Backsight"+"\t\t"+"Instrument Height"+"\t\t"+"Foresight"+"\t\t"+"Elevation"+"\t\n")
+    fo1.write("Benchmark"+"\t\t"+"Backsight"+"\t\t"+"Instrument Height"+"\t\t"+"Foresight"+"\t\t"+"Elevation"+"\t\n")
     for index in range(0, len(input_benchmark)):
         #Create new list for each item, convert to strings
         newLst = str(input_benchmark[index]) + "\t\t\t\t" + str(input_backSight[index]) + "\t\t\t\t" + str(listinput_instHeight[index]) + "\t\t\t\t" + str(input_foreSight[index]) + "\t\t" + str(listinput_foreSight[index]) + "\t\n"
