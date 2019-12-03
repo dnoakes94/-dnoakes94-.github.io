@@ -82,6 +82,7 @@ try:
         print "C. Exit"
         print "******************************************"
     ("Type of input: manualInput or importCSV ")
+    
     manualOrCSV = raw_input("Please choose one of the options above to get started (A, B, C): ") #checks to see if user want to input manually or import a CSV
     if manualOrCSV == "A" or manualOrCSV == "a":
         manualInput()
@@ -159,7 +160,13 @@ try:
             importCSV_write.write( str(input_benchMark[index]) + "," + str(input_backSight[index]) \
                 + "," + str(input_instHeight[index]) + "," + str(input_foresight[index]) + "," + str(input_elevation[index]) + '\n' )
         
-        print raw_input
+        end = raw_input("Would you like to import another CSV file or input caculations manually?(Y/N): ")
+        end = end.upper()
+        end = end.rstrip("\r")
+        
+        if end == "N":
+            print "Thanks for using the program!"
+            break
 
 
     ####################################### This Section will include our manual entry outputs ###########################################################
