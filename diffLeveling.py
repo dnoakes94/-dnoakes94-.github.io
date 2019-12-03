@@ -105,15 +105,15 @@ def main():
     for index in range(0, len(input_benchmark)):        # index will be 0, 1, 2, ...
     # print station number, backsight, instrument height, foresight, and elevation from lists
     # formated to three decimals with decimals aligned
-        print 
+        print input_benchmark[index], "\t", "\t", input_backSight[index], "\t", "\t", input_instHeight[index], "\t", "\t", input_foreSight[index], "\t", "\t", input_elevation[index]
 
     # Based on the generated inputs and calculations from the above table, generate a text file with it
     #Output for csv 
-    fo1 = open('Output.txt', 'w')
+    fo1 = open('ManualOutput.txt', 'w')
     fo1.write("Station Number"+"\t\t"+"Backsight"+"\t\t"+"Instrument Height"+"\t\t"+"Foresight"+"\t\t"+"Elevation"+"\t\n")
-    for index in range(0, len(input_centralpress)):
+    for index in range(0, len(input_benchmark)):
         #Create new list for each item, convert to strings
-        newLst = str(list) + "\t\t\t\t" + str(list) + "\t\t\t\t" + str(list) + "\t\t\t\t" + str(list) + "\t\t" + str(list) + "\t\n"
+        newLst = str(input_benchmark[index]) + "\t\t\t\t" + str(input_backSight[index]) + "\t\t\t\t" + str(listinput_instHeight[index]) + "\t\t\t\t" + str(input_foreSight[index]) + "\t\t" + str(listinput_foreSight[index]) + "\t\n"
         fo1.write(newLst)                                  #Write each item to a new list
     fo1.close()
 
