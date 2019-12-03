@@ -118,6 +118,7 @@ def main():
 
     # output loop
     for index in range(0, len(input_elevation)):
+        
         importCSV_write.write = (str(objectID[index]) + "," + str(benchMark[index]) + "," + str(input_backSight[index]) \
             + "," + str(input_instHeight[index]) + "," + str(input_foresight[index]) + "," + str(input_elevation[index]) + '\n' )
 
