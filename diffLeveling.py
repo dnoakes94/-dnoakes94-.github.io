@@ -117,6 +117,9 @@ def main():
         fo1.write(newLst)                                  #Write each item to a new list
     fo1.close()
 
+    print
+    print "Done"
+
     ######################## End of outputs ###########################
 
     #Exception Handlers (Dan)
