@@ -83,6 +83,10 @@ def main():
     ######################## End of input, Start of calculations ##########################
     
     # list to hold calculated results
+    calc_elevationChange = []                           #create empty list for elevation change
+
+    elevation_Change = elevation_Change(elevation)
+    calc_elevationChange.append(elevation_Change)       #add elevation change to calc_elevationChange list
 
 
 
@@ -99,11 +103,21 @@ def main():
     # Display column header line
     print "Benchmark\tBackSight\tInstrument Height\t ForeSight\tElevation"
 
-    # Display station number, backsight, instrument height, foresight, and elevation lists in table format
+    # Display benchmark, backsight, instrument height, foresight, and elevation lists in table format
     for index in range(0, len(input_benchmark)):        # index will be 0, 1, 2, ...
-    # print station number, backsight, instrument height, foresight, and elevation from lists
+    # print benchmark, backsight, instrument height, foresight, and elevation from lists
     # formated to three decimals with decimals aligned
         print input_benchmark[index], "\t", "\t", input_backSight[index], "\t", "\t", input_instHeight[index], "\t", "\t", input_foreSight[index], "\t", "\t", input_elevation[index]
+
+    print "---------------------------------------------------------------------------------"
+    print
+
+    # Display elevation change
+    # print elevation change from list
+    # formatted to three decimal places
+    print calc_elevationChange[index]
+
+
 
     # Based on the generated inputs and calculations from the above table, generate a text file with it
     #Output for csv 
