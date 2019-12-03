@@ -1,5 +1,7 @@
+# diffLeveling.py
 #Differential Leveling Computation
 #Caroline Bull, Christine Lacanilao, Daniel Noakes
+#Calculated the elevation 
 
 #Import math and csv module
 import math
@@ -7,7 +9,8 @@ import csv
 
 #write helper files first
 #anything that will read or write
-#User Created Functions
+
+############################## User Created Functions ##############################
 
 def instHeightCalculation(instHeight, elevation, backSight):
         instHeight = float(instHeight)
@@ -37,7 +40,7 @@ def main():
     print "Welcome to Differential Leveling Computation Tool"
     print
 
-    #################### Start of input ########################
+    ############################## Start of inputs ##################################
 
     # lists to hold file input
     input_benchmark = []                    #create empty iist for benchmark
@@ -70,12 +73,6 @@ def main():
             # Dan's Section
 
 
-            firstline = True
-            for strRead in importCSV:
-                if firstline:
-                    firstline = False
-                    continue
-            
     
 
 
@@ -85,43 +82,42 @@ def main():
             # Dan's Section
 
 
-    ############## End of input, Start of calculations ################
+    ######################## End of input, Start of calculations ##########################
     
     # list to hold calculated results
 
 
 
-    ############## End of calculations, Start of output #################
-
-
-    # Display column header line
-    print "Column header"
-
-    # Display latitude, external pressure, central pressure, windspeed from lists in table format
-    for index in range(0, len(input_centralpress)):        # index will be 0, 1, 2, ...
-    # print latitude, external pressure, central pressure and wind speed from lists
-    # formated to two decimals with decimals aligned
-        print input_latitude[index], "\t", "\t", "\t", round(input_externalpress[index], 2), "\t", "\t", "\t", round(input_centralpress[index], 2), "\t", "\t", "\t", round(calc_windspeed[index], 2), "\t", "\t", hurricane_severity[index]
-
-    #Output for csv 
-    fo1 = open('Output.txt', 'w')
-    fo1.write("Benchmark"+"\t\t"+"Backsight"+"\t\t"+"Instrument Height"+"\t\t"+"Foresight"+"\t\t"+"Elevation"+"\t\n")
-    for index in range(0, len(input_centralpress)):
-        #Create new list for each item, convert to strings
-        newLst = str(input_latitude[index]) + "\t\t\t\t" + str(input_externalpress[index]) + "\t\t\t\t" + str(input_centralpress[index]) + "\t\t\t\t" + str(calc_windspeed[index]) + "\t\t" + str(hurricane_severity[index]) + "\t\n"
-        fo1.write(newLst)                                  #Write each item to a new list
-    fo1.close()
-
+    ######################## End of calculations, Start of outputs ###########################
 
     ############################### This Section will include include our outputs #################################################################
 
-            # Christine's Section
+    # Christine!
 
     print "---------------------------------------------------------------------------------"
     print
 
+    # This should display all the gathered inputs and calculations in a table format
+    # Display column header line
+    print "Station Number\tBackSight\tInstrument Height\t ForeSight\tElevation"
 
+    # Display station number, backsight, instrument height, foresight, and elevation lists in table format
+    for index in range(0, len(input_benchmark)):        # index will be 0, 1, 2, ...
+    # print station number, backsight, instrument height, foresight, and elevation from lists
+    # formated to three decimals with decimals aligned
+        print 
 
+    # Based on the generated inputs and calculations from the above table, generate a text file with it
+    #Output for csv 
+    fo1 = open('Output.txt', 'w')
+    fo1.write("Station Number"+"\t\t"+"Backsight"+"\t\t"+"Instrument Height"+"\t\t"+"Foresight"+"\t\t"+"Elevation"+"\t\n")
+    for index in range(0, len(input_centralpress)):
+        #Create new list for each item, convert to strings
+        newLst = str(list) + "\t\t\t\t" + str(list) + "\t\t\t\t" + str(list) + "\t\t\t\t" + str(list) + "\t\t" + str(list) + "\t\n"
+        fo1.write(newLst)                                  #Write each item to a new list
+    fo1.close()
+
+    ######################## End of outputs ###########################
 
     #Exception Handlers (Dan)
 
