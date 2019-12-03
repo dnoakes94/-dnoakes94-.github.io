@@ -23,26 +23,32 @@ def elevCalculation(foresight, instHeight):
         elevation = round(elevation, 3)
         return elevation
 
-
-#################### User defined functions (Owner: Caroline) ####################
-# Display program purpose
-print "Welcome to Differential Leveling Calculation Tool"
-print "This program uses the benchmark, foresight and backsight measurements"
-print "to calculate the instrument height and change in elevation."
-print
+# Define the functions to be used to compute manual import (Owner: Caroline)
 
 
-    ############################## Start of inputs ##################################
+# Main body function
 
-    # lists to hold file input
-    input_benchmark = []                    #create empty iist for benchmark
-    input_instHeight = []                   # create empty list for intrument height
-    input_elevation = []                    # create empty list for elevation
-    input_backSight = []                    # create empty list for back sight
-    input_foreSight = []                    # create empty list for foresight
+def main():
+        # Display program purpose
+        print "Welcome to Differential Leveling Computation Tool"
+        print "This program uses the benchmark, foresight and backsight measurements"
+        print "to calculate the instrument height and change in elevation."
+        print
 
-    # obtain inputs from user
-############################# Beginning Of Manual Input funstion (Owner: Caroline) #################################################
+
+
+
+############################## Start of inputs ##############################
+
+    # # lists to hold file input
+    # input_benchmark = []                    #create empty iist for benchmark
+    # input_instHeight = []                   # create empty list for intrument height
+    # input_elevation = []                    # create empty list for elevation
+    # input_backSight = []                    # create empty list for back sight
+    # input_foreSight = []                    # create empty list for foresight
+
+    
+############################# Beginning Of Manual Input function (Owner: Caroline) #################################################
 try:
     def manualInput():
         input_backSight = []        # create empty list for back sight
