@@ -1,22 +1,21 @@
 #Differential Leveling Computation
 #Caroline Bull, Christine Lacanilao, Daniel Noakes
 
-#Import math and csv module
+#Import math and csv module 
 import math
 import csv
 import itertools
 
-def instHeightCalculation(instHeight, elevation, backSight):
-        instHeight = float(instHeight)                              #I don't think this one is needed because it will be overwritten with the next one
-        instHeight = float(elevation) + float(backSight)            #why do we have the first and then the second one, which basically overwites the first one?
-        round(instHeight, 3)                                    
+
+def instHeightCalculation(elevation, backSight):
+        instHeight = float(elevation) + float(backSight)
+        instHeight = round(instHeight, 3)
         return instHeight
         
       
-def elevCalculation(foresight, instHeight, elevation):
-        elevation = float(elevation)                            #same thing, this gets overwritten in the next line
+def elevCalculation(foresight, instHeight):
         elevation = float(instHeight) - float(foresight)
-        round(elevation, 3)
+        elevation = round(elevation, 3)
         return elevation
 
 
@@ -25,12 +24,14 @@ def elevCalculation(foresight, instHeight, elevation):
 #         check = sum(input_foresight) - sum(input_backSight)
 #         return check
 
-# def elevationChange():                                                             #im confused with how we will do this
-#         elevationChange = float(elevation[0]) - float(elevation[-1])              #I think this is how we can calculate elevationChange
+# Get user to enter reference elevation and have the calulation subtract the final elevation
+# have the first elevation reverence elevation (bm1) ask user what the final elevation was 
+# def elevationChange(): 
+#         elevationChange = float(elevation[0]) - float(elevation[-1])
 #         round(elevationChange, 3)
 #         return elevationChange
 
-#try: 
+#try:
 
 def main():
     # Display program purpose
@@ -38,19 +39,16 @@ def main():
     print
 
     # Lists to hold file input from the CSV
-    input_instHeight= []        # create empty list for intrument height
-    input_elevation = []        # create empty list for elevation
-    input_backSight = []        # create empty list for back sight
-    input_foresight = []        # create empty list for foresight
     input_benchMark = []        # creates an empty list for the benchmark
-
+    input_backSight = []        # create empty list for back sight
+    input_instHeight= []        # create empty list for intrument height
+    input_foresight = []        # create empty list for foresight
+    input_elevation = []        # create empty list for elevation
+    
     importCSV = open("TextDoc.csv", "r")
 
   
-    # if input_instHeight < 1:
-    #     elevCalculation = True
 
-    #else:
     firstline = True
     for strRead in importCSV:
         if firstline:
@@ -77,48 +75,37 @@ def main():
 
     importCSV.close()
 
-############################### End of input, start of CSV file calculations #############################################################
+############################### End of input, start of CSV file calculations (Completed By Dan) #############################################################
 
     # creates an empty list for the calcualted elevation, intrument height, error of closure and generates a unique ID
-    calc_instHeight = []
-    calc_elevation = []
+    #calc_instHeight = []
+    #calc_elevation = []
     #calc_errOfClosure = []
-    objectID = []
-    uniqueID = 0
+    #elevationChange = []
 
 
     # retrieves the variable in a specific index from the input list
-    for index in range(1, len(input_elevation)):
-        foresight = input_foresight[index]
-        backSight = input_backSight[index]
-        benchMark = input_benchMark[index]
-        elevation = input_elevation[index]
+    for index in range(0, len(input_elevation) -1 ):
+        elevation = float(input_elevation[index])
+        foresight = float(input_foresight[index + 1])
+        backSight = float(input_backSight[index])
+        benchMark = float(input_benchMark[index])
+        
+        intrumentHeight = instHeightCalculation(elevation, backSight)
+        input_instHeight[index] = intrumentHeight
 
-    # calculates elevation using index minus 1 of intrument height to perform the elevation calculation
-    for index in range (2, len(input_instHeight)):
-        instHeight = input_instHeight[index-1]
-        elevation = input_elevation[index]
-        foresight = input_foresight[index]
+        groundElevation = elevCalculation(foresight, intrumentHeight)
+        input_elevation[index + 1 ] = groundElevation
 
-    groundElevation = elevCalculation(float(foresight), float(instHeight), float(elevation))
-    calc_elevation.append(groundElevation)
 
-    intrumentHeight = instHeightCalculation(float(instHeight), float(elevation), float(backSight))
-    calc_instHeight.append(intrumentHeight)
-
-    # Give the new CSV rows a unique ID
-    uniqueID += 1
-    objectID.append(uniqueID)
-    
-
-############################### This Section will include include our outputs #################################################################
+############################### This Section will include include our outputs (Completed by Dan) #################################################################
 
     importCSV_write = open('CSVOutputs.csv', 'w')
-    importCSV_write.write = ('UniqueID, BenchMark, BackSight, InstrumentHeight, ForeSight, Elevation\n')
+    importCSV_write.write('BenchMark, BackSight, InstrumentHeight, Foresight, Elevation\n')
 
     # output loop
     for index in range(0, len(input_elevation)):
-        importCSV_write.write = (str(objectID[index]) + "," + str(benchMark[index]) + "," + str(input_backSight[index]) \
+        importCSV_write.write( str(input_benchMark[index]) + "," + str(input_backSight[index]) \
             + "," + str(input_instHeight[index]) + "," + str(input_foresight[index]) + "," + str(input_elevation[index]) + '\n' )
 
 if __name__ == "__main__":
