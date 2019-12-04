@@ -98,12 +98,20 @@ try:
 
                         elevation = elevCalculation(instHeight, foresight)
                         input_elevation.append(elevation)  
+                        
+                        elevchange = elevationChange(input_elevation)
+                        elev_change.append(elevchange)
+                    
+                    print "--------------------------------------------------------------------------------"
                     print "Backsight\t Instrument Height\tForesight\tElevation"
                     print 0, 0, 0, input_elevation[index]
                         
                     for index in range(1,len(input_elevation)):         # index will be 0, 1, 2, ...
                         print input_backSight[index-1], calc_instHeight[index-1], input_foresight[index-1], input_elevation[index]
-                        print "Elevation Change", elevationChange(input_elevation)
+                    
+                    print "--------------------------------------------------------------------------------"
+                    
+                    print "The elevation change is: ", elev_change[-1]
                     break
 
             else:
