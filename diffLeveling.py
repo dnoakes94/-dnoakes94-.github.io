@@ -30,19 +30,18 @@ def elevCalculation(foresight, instHeight):
 
 # Define the functions to be used to compute differential leveling manually (Owner: Caroline)
 def manualInput():
-    input_backSight = []        # create empty list for back sight
-    input_foresight = []        # create empty list for foresight
-    input_elevation = []        # creates an empty list for elevation
+        input_backSight = []        # create empty list for back sight
+        input_foresight = []        # create empty list for foresight
+        input_elevation = []        # creates an empty list for elevation
 
-    elevation = float(input("Benchmark:")) 
-    input_elevation.append(elevation)
-        
+        elevation = float(input("Benchmark:")) 
+        input_elevation.append(elevation)
 
 # Define the function used to calculate elevation change (Owner: Christine)
 def elevationChange(elevation):
-    elevationChange = float(elevation[0]) - float(elevation[-1])
-    round(elevationChange, 3)
-    return elevationChange
+        elevationChange = float(elevation[0]) - float(elevation[-1])
+        round(elevationChange, 3)
+        return elevationChange
 
 # Main body function
 
@@ -53,46 +52,65 @@ def main():
         print "to calculate the instrument height and change in elevation."
         print
 
+        while True:
+            print "Differential Leveling Calculator"
+            print
+            print "******************************************"
+            print "A. Enter measurements manually"
+            print "B. Import a .csv file"
+            print "C. Exit"
+            print "******************************************"
+        ("Type of input: manualInput or importCSV ")
+        
+        manualOrCSV = raw_input("Please choose one of the options above to get started (A, B, C): ") #checks to see if user want to input manually or import a CSV
+        if manualOrCSV == "A" or manualOrCSV == "a":
+            manualInput()
+        elif manualOrCSV == "B" or choice == "b":
+            importCSV()
+        else:
+            print ("Exiting")
+
+
 
 
 ############################## Start of inputs ##############################
 
-    #----- Import CSV Input -----#
-    # Lists to hold file input from the CSV
-        input_benchMark = []        # creates an empty list for the benchmark
-        input_backSight = []        # create empty list for back sight
-        input_instHeight= []        # create empty list for intrument height
-        input_foresight = []        # create empty list for foresight
-        input_elevation = []        # create empty list for elevation
+    # #----- Import CSV Input -----#
+    # # Lists to hold file input from the CSV
+    #     input_benchMark = []        # creates an empty list for the benchmark
+    #     input_backSight = []        # create empty list for back sight
+    #     input_instHeight= []        # create empty list for intrument height
+    #     input_foresight = []        # create empty list for foresight
+    #     input_elevation = []        # create empty list for elevation
     
-        importCSV = open("TextDoc.csv", "r")
+    #     importCSV = open("TextDoc.csv", "r")
 
     
-        firstline = True
-        for strRead in importCSV:
-            if firstline:
-                firstline = False
-                continue
+    #     firstline = True
+    #     for strRead in importCSV:
+    #         if firstline:
+    #             firstline = False
+    #             continue
             
-            strLst = strRead.split(",")
+    #         strLst = strRead.split(",")
         
-            benchMark = strLst[0]
-            input_benchMark.append(benchMark)           # add benchMark to input_benchMark list
+    #         benchMark = strLst[0]
+    #         input_benchMark.append(benchMark)           # add benchMark to input_benchMark list
 
-            backSight = strLst[1]
-            input_backSight.append(backSight) 	        # add backSight to input_backSight list
+    #         backSight = strLst[1]
+    #         input_backSight.append(backSight) 	        # add backSight to input_backSight list
             
-            instHeight = strLst[2]
-            input_instHeight.append(instHeight) 	    # add instHeight to input_instHeight list
+    #         instHeight = strLst[2]
+    #         input_instHeight.append(instHeight) 	    # add instHeight to input_instHeight list
             
-            foresight = strLst[3]
-            input_foresight.append(foresight) 		    # add foresight to input_foresight list
+    #         foresight = strLst[3]
+    #         input_foresight.append(foresight) 		    # add foresight to input_foresight list
 
-            elevation = strLst[4]                       # add elevation to input_elevation list
-            elevation = elevation.rstrip('\n')
-            input_elevation.append(elevation)
+    #         elevation = strLst[4]                       # add elevation to input_elevation list
+    #         elevation = elevation.rstrip('\n')
+    #         input_elevation.append(elevation)
 
-        importCSV.close()
+    #     importCSV.close()
 
     #----- Manual Entry Input -----#
         while True:
@@ -121,18 +139,18 @@ def main():
     #calc_errOfClosure = []
     #elevationChange = []
 
-    # retrieves the variable in a specific index from the input list
-        for index in range(0, len(input_elevation) -1 ):
-            elevation = float(input_elevation[index])
-            foresight = float(input_foresight[index + 1])
-            backSight = float(input_backSight[index])
-            benchMark = float(input_benchMark[index])
+    # # retrieves the variable in a specific index from the input list
+    #     for index in range(0, len(input_elevation) -1 ):
+    #         elevation = float(input_elevation[index])
+    #         foresight = float(input_foresight[index + 1])
+    #         backSight = float(input_backSight[index])
+    #         benchMark = float(input_benchMark[index])
             
-            intrumentHeight = instHeightCalculation(elevation, backSight)
-            input_instHeight[index] = intrumentHeight
+    #         intrumentHeight = instHeightCalculation(elevation, backSight)
+    #         input_instHeight[index] = intrumentHeight
 
-            groundElevation = elevCalculation(foresight, intrumentHeight)
-            input_elevation[index + 1 ] = groundElevation
+    #         groundElevation = elevCalculation(foresight, intrumentHeight)
+    #         input_elevation[index + 1 ] = groundElevation
 
 
     #-------------------- Calculations for Manual Input (Owner: Caroline) --------------------#
@@ -177,40 +195,40 @@ def main():
 
     ######################## End of input, Start of calculations ##########################
     
-    # list to hold calculated results
-        calc_elevationChange = []                           #create empty list for elevation change
+    # # list to hold calculated results
+    #     calc_elevationChange = []                           #create empty list for elevation change
 
-        elevation_Change = elevation_Change(elevation)
-        calc_elevationChange.append(elevation_Change)       #add elevation change to calc_elevationChange list
+    #     elevation_Change = elevation_Change(elevation)
+    #     calc_elevationChange.append(elevation_Change)       #add elevation change to calc_elevationChange list
 
 
-        importCSV = open("TextDoc.csv", "r")
+    #     importCSV = open("TextDoc.csv", "r")
 
-        firstline = True
-        for strRead in importCSV:
-            if firstline:
-                firstline = False
-                continue
+    #     firstline = True
+    #     for strRead in importCSV:
+    #         if firstline:
+    #             firstline = False
+    #             continue
             
-            strLst = strRead.split(",")
+    #         strLst = strRead.split(",")
 
-            benchMark = strLst[0]
-            input_benchMark.append(benchMark)           # add benchMark to input_benchMark list
+    #         benchMark = strLst[0]
+    #         input_benchMark.append(benchMark)           # add benchMark to input_benchMark list
 
-            backSight = strLst[1]
-            input_backSight.append(backSight) 	        # add backSight to input_backSight list
+    #         backSight = strLst[1]
+    #         input_backSight.append(backSight) 	        # add backSight to input_backSight list
             
-            instHeight = strLst[2]
-            input_instHeight.append(instHeight) 	    # add instHeight to input_instHeight list
+    #         instHeight = strLst[2]
+    #         input_instHeight.append(instHeight) 	    # add instHeight to input_instHeight list
             
-            foresight = strLst[3]
-            input_foresight.append(foresight) 		    # add foresight to input_foresight list
+    #         foresight = strLst[3]
+    #         input_foresight.append(foresight) 		    # add foresight to input_foresight list
 
-            elevation = strLst[4]                       # add elevation to input_elevation list
-            elevation = elevation.rstrip('\n')
-            input_elevation.append(elevation)
+    #         elevation = strLst[4]                       # add elevation to input_elevation list
+    #         elevation = elevation.rstrip('\n')
+    #         input_elevation.append(elevation)
 
-        importCSV.close()
+    #     importCSV.close()
 
     ######################## End of calculations, Start of outputs ###########################
 
@@ -218,21 +236,21 @@ def main():
 
     #-------------------- CSV Import Outputs --------------------#
 
-        importCSV_write = open('CSVOutputs.csv', 'w')
-        importCSV_write.write('BenchMark, BackSight, InstrumentHeight, Foresight, Elevation\n')
+        # importCSV_write = open('CSVOutputs.csv', 'w')
+        # importCSV_write.write('BenchMark, BackSight, InstrumentHeight, Foresight, Elevation\n')
 
-        # output loop
-        for index in range(0, len(input_elevation)):
-            importCSV_write.write( str(input_benchMark[index]) + "," + str(input_backSight[index]) \
-                + "," + str(input_instHeight[index]) + "," + str(input_foresight[index]) + "," + str(input_elevation[index]) + '\n' )
+        # # output loop
+        # for index in range(0, len(input_elevation)):
+        #     importCSV_write.write( str(input_benchMark[index]) + "," + str(input_backSight[index]) \
+        #         + "," + str(input_instHeight[index]) + "," + str(input_foresight[index]) + "," + str(input_elevation[index]) + '\n' )
         
-        end = raw_input("Would you like to import another CSV file or input caculations manually?(Y/N): ")
-        end = end.upper()
-        end = end.rstrip("\r")
+        # end = raw_input("Would you like to import another CSV file or input caculations manually?(Y/N): ")
+        # end = end.upper()
+        # end = end.rstrip("\r")
         
-        if end == "N":
-            print "Thanks for using the program!"
-            break
+        # if end == "N":
+        #     print "Thanks for using the program!"
+        #     break
     
     #-------------------- Manual Entry Outputs --------------------#
 
