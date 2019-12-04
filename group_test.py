@@ -3,7 +3,7 @@
 # Differential Leveling Computation
 
 # Caroline Bull, Christine Lacanilao, Daniel Noakes
-# Assumptions: It assumes that the test fiels will be in th same folder as the program. It also assumes all measurements are in metres.
+# Assumptions: It assumes that the test files will be in the same folder as the program. It also assumes all measurements are in metres.
 
 # Calculate elevation given a starting elevation point, and entered backsight and foresight values
 # The user is given the option to do a manual entry or to import a csv
