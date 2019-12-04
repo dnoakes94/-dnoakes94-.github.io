@@ -1,12 +1,17 @@
 # diffLeveling.py
-#Differential Leveling Computation
-#Caroline Bull, Christine Lacanilao, Daniel Noakes
-#Calculate elevation given a starting elevation point, and entered backsight and foresight values
-#Given the option to do manual entry or to import a csv
 
-#Import math and csv module
+# Differential Leveling Computation
+
+# Caroline Bull, Christine Lacanilao, Daniel Noakes
+
+# Calculate elevation given a starting elevation point, and entered backsight and foresight values
+# The user is given the option to do a manual entry or to import a csv
+# The program returns a report in the form of a text file for the user.
+
+# Import math and csv module
 import math
 import csv
+import itertools
 
 ############################## User Created Functions ##############################
 
@@ -23,8 +28,21 @@ def elevCalculation(foresight, instHeight):
         elevation = round(elevation, 3)
         return elevation
 
-# Define the functions to be used to compute manual import (Owner: Caroline)
+# Define the functions to be used to compute differential leveling manually (Owner: Caroline)
+def manualInput():
+    input_backSight = []        # create empty list for back sight
+    input_foresight = []        # create empty list for foresight
+    input_elevation = []        # creates an empty list for elevation
 
+    elevation = float(input("Benchmark:")) 
+    input_elevation.append(elevation)
+        
+
+# Define the function used to calculate elevation change (Owner: Christine)
+def elevationChange(elevation):
+    elevationChange = float(elevation[0]) - float(elevation[-1])
+    round(elevationChange, 3)
+    return elevationChange
 
 # Main body function
 
@@ -34,30 +52,8 @@ def main():
         print "This program uses the benchmark, foresight and backsight measurements"
         print "to calculate the instrument height and change in elevation."
         print
-
-
-
-
-############################## Start of inputs ##############################
-
-    # # lists to hold file input
-    # input_benchmark = []                    #create empty iist for benchmark
-    # input_instHeight = []                   # create empty list for intrument height
-    # input_elevation = []                    # create empty list for elevation
-    # input_backSight = []                    # create empty list for back sight
-    # input_foreSight = []                    # create empty list for foresight
-
-    
-############################# Beginning Of Manual Input function (Owner: Caroline) #################################################
-try:
-    def manualInput():
-        input_backSight = []        # create empty list for back sight
-        input_foresight = []        # create empty list for foresight
-        input_elevation = []        # creates an empty list for elevation
-
-        elevation = float(input("Benchmark:")) 
-        input_elevation.append(elevation)
-        
+    try:
+        # USER INPUTS #
         while True:
                 backSight = float(input("Backsight reading:")) 
                 input_backSight.append(backSight) 		        # add
@@ -72,6 +68,19 @@ try:
                 print
                 if  end.upper() == 'Y':
                     break
+
+
+############################## Start of inputs ##############################
+
+    # # lists to hold file input
+    # input_benchmark = []                    #create empty iist for benchmark
+    # input_instHeight = []                   # create empty list for intrument height
+    # input_elevation = []                    # create empty list for elevation
+    # input_backSight = []                    # create empty list for back sight
+    # input_foreSight = []                    # create empty list for foresight
+
+    
+
 
         ######################### Calculations for Manual Input (Owner: Caroline)####################################
         
@@ -165,7 +174,7 @@ try:
 
     ############################### This Section will include include our outputs #################################################################
 
-    # Christine (manual )
+    # Christine (manual)
 
     
     print "---------------------------------------------------------------------------------"
@@ -241,7 +250,7 @@ try:
 
      
 
-    ######################## End of outputs ###########################
+######################## End of outputs ###########################
 
 
 # Exception handlers (Dan)
