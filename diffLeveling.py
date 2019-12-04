@@ -47,25 +47,28 @@ def elevationChange(elevation):
 
 def main():
         # Display program purpose
+        print
         print "Welcome to Differential Leveling Computation Tool"
+        print
         print "This program uses the benchmark, foresight and backsight measurements"
         print "to calculate the instrument height and change in elevation."
         print
 
-        while True:
-            print "Differential Leveling Calculator"
-            print
-            print "******************************************"
-            print "A. Enter measurements manually"
-            print "B. Import a .csv file"
-            print "C. Exit"
-            print "******************************************"
+        # while True:
+        print "Differential Leveling Calculator"
+        print
+        print "******************************************"
+        print "A. Enter measurements manually"
+        print "B. Import a .csv file"
+        print "C. Exit"
+        print "******************************************"
+        print
         ("Type of input: manualInput or importCSV ")
         
         manualOrCSV = raw_input("Please choose one of the options above to get started (A, B, C): ") #checks to see if user want to input manually or import a CSV
         if manualOrCSV == "A" or manualOrCSV == "a":
             manualInput()
-        elif manualOrCSV == "B" or choice == "b":
+        elif manualOrCSV == "B" or manualOrCSV == "b":
             importCSV()
         else:
             print ("Exiting")
@@ -113,6 +116,14 @@ def main():
     #     importCSV.close()
 
     #----- Manual Entry Input -----#
+def manualInput():
+        input_backSight = []        # create empty list for back sight
+        input_foresight = []        # create empty list for foresight
+        input_elevation = []        # creates an empty list for elevation
+
+        elevation = float(input("Starting elevation: ")) 
+        input_elevation.append(elevation)
+
         while True:
                 backSight = float(input("Backsight reading:")) 
                 input_backSight.append(backSight) 		        # add
@@ -156,7 +167,7 @@ def main():
     #-------------------- Calculations for Manual Input (Owner: Caroline) --------------------#
     
 
-        calc_instHeight= []        # create empty list for intrument height
+        calc_instHeight = []        # create empty list for intrument height
 
         for index in range(0, len(input_elevation)):   	    # index will be 0, 1, 2, ...
 
@@ -173,24 +184,24 @@ def main():
                 print calc_instHeight
 
 
-    # Create a while loop with exception handlers that will run until user does not want to input anymore values or CSV files
-        while True:
-            print "Differential Leveling Calculator"
-            print
-            print "******************************************"
-            print "A. Enter measurements manually"
-            print "B. Import a .csv file"
-            print "C. Exit"
-            print "******************************************"
-        ("Type of input: manualInput or importCSV ")
+    # # Create a while loop with exception handlers that will run until user does not want to input anymore values or CSV files
+    #     while True:
+    #         print "Differential Leveling Calculator"
+    #         print
+    #         print "******************************************"
+    #         print "A. Enter measurements manually"
+    #         print "B. Import a .csv file"
+    #         print "C. Exit"
+    #         print "******************************************"
+    #     ("Type of input: manualInput or importCSV ")
         
-        manualOrCSV = raw_input("Please choose one of the options above to get started (A, B, C): ") #checks to see if user want to input manually or import a CSV
-        if manualOrCSV == "A" or manualOrCSV == "a":
-            manualInput()
-        elif manualOrCSV == "B" or choice == "b":
-            importCSV()
-        else:
-            print ("Exiting")
+    #     manualOrCSV = raw_input("Please choose one of the options above to get started (A, B, C): ") #checks to see if user want to input manually or import a CSV
+    #     if manualOrCSV == "A" or manualOrCSV == "a":
+    #         manualInput()
+    #     elif manualOrCSV == "B" or manualOrCSV == "b":
+    #         importCSV()
+    #     else:
+    #         print ("Exiting")
     
 
     ######################## End of input, Start of calculations ##########################
